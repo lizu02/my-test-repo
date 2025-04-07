@@ -17,13 +17,13 @@ class Fenster(QMainWindow):
 
 
         menubar = self.menuBar()
-        filemenu = menubar.addMenu("File")  # Menüleiste erstellen
+        filemenu = menubar.addMenu("File")  # Menüleiste (oben) erstellen
         
-        speichern = QAction("save", self)          # Aktion "speichern" erstellen
-        verlassen = QAction("Quit", self)       # Aktion "verlassen" erstellen
+        speichern = QAction("save", self)          # Aktion "save" erstellen für das menu
+        verlassen = QAction("Quit", self)       # Aktion "quit" erstellen für das menu
 
-        speichern.triggered.connect(self.menu_save)  #wenn es getriggert wird, also ausgelöst wird, dann wird die Funktion menu_save aufgerufen
-        verlassen.triggered.connect(self.menu_quit)  #wenn es getriggert wird, also ausgelöst wird, dann wird die Funktion menu_quit aufgerufen
+        speichern.triggered.connect(self.menu_save)  #wenn es 'getriggert' wird, also ausgelöst wird, dann wird die Funktion menu_save aufgerufen
+        verlassen.triggered.connect(self.menu_quit)  #wenn es 'getriggert' wird, also ausgelöst wird, dann wird die Funktion menu_quit aufgerufen
 
         filemenu.addAction(speichern)  # Aktion "speichern" dem Menü "File" hinzufügen
         filemenu.addAction(verlassen)  # Aktion "verlassen" dem Menü "File" hinzufügen
@@ -31,8 +31,9 @@ class Fenster(QMainWindow):
 
 
 
-        button1 = QPushButton("Save")
+        button1 = QPushButton("Save")           # knopf ganz unten erstellen
 
+        # alle abfragemasken bzw. felder zum ausfüllen erstellen. jeweils immer ein Label(='Titel') und ein Eingabefeld
         self.nameLabel1 = QLabel("Vorname:")
         self.nameLine1 = QLineEdit()
         self.nameLabel2 = QLabel("Nachname:")
@@ -51,7 +52,7 @@ class Fenster(QMainWindow):
         
       
 
-     
+        # Positionierung der einzelnen Widgets im Gesamtlayout
         layout.addWidget(self.nameLabel1, 0, 0)   
         layout.addWidget(self.nameLine1, 0, 1)     
         layout.addWidget(self.nameLabel2, 1, 0)
@@ -70,7 +71,7 @@ class Fenster(QMainWindow):
                     
 
 
-        self.setMinimumSize(600,400)
+        self.setMinimumSize(600,400)       # Mindestgröße des Fensters
         
 
         ## Zentrierung der Widgets
@@ -84,13 +85,13 @@ class Fenster(QMainWindow):
         self.show()
 
 
-        button1.clicked.connect(self.menu_save)  # Wenn Button 1 geklickt wird, dann wird die Funktion button1Clicked aufgerufen
+        button1.clicked.connect(self.menu_save)  # Wenn Button 1 geklickt wird, dann wird die Funktion menu_save aufgerufen (selbe soll auch bei speichern oben links passieren)
 
 
 
 
-    def menu_save(self):  # Funktion, die aufgerufen wird, wenn "speichern" geklickt wird
-    # Werte aus den Eingabefeldern holen
+    def menu_save(self):  # Funktion, die aufgerufen wird, wenn "save" geklickt wird
+   
         name1 = self.nameLine1.text()
         name2 = self.nameLine2.text()
         geburtsdatum = self.geburtsdatumLine.text()
@@ -99,10 +100,10 @@ class Fenster(QMainWindow):
         ort = self.ortLine.text()
         land = self.landlabel2.currentText()
 
-    # Alles kommagetrennt in eine Zeile zusammenfügen
+    
         zeile = f"{name1},{name2},{geburtsdatum},{adresse},{plz},{ort},{land}\n"
 
-    # Datei öffnen und schreiben
+    
         with open("output.txt", "w", encoding="utf-8") as datei:
             datei.write(zeile)
 
