@@ -124,11 +124,13 @@ class Fenster(QMainWindow):
     
         zeile = f"{name1},{name2},{geburtsdatum},{adresse},{plz},{ort},{land}\n"
 
-    
-        with open("output.txt", "w", encoding="utf-8") as datei:
-            datei.write(zeile)
+        dateipfad, _ = QFileDialog.getSaveFileName(self, "Datei speichern", "","Textdateien (*.txt)")
 
-        print("Daten gespeichert")  # Ausgabe in der Konsole
+        if dateipfad:
+            with open(dateipfad, "w", encoding="utf-8") as datei:
+                datei.write(zeile)
+
+            print("Daten gespeichert in:", dateipfad)  # Ausgabe in der Konsole
 
 
     
@@ -146,7 +148,30 @@ class Fenster(QMainWindow):
 
 
     def menu_laden(self):
-        pass
+        
+        dateipfad, _ = QFileDialog.getOpenFileName(self, "Datei laden", "","Textdateien (*.txt)")
+
+        if dateipfad:
+            with open(dateipfad, "r", encoding="utf-8") as datei:
+                inhalt1 = datei.readline()
+                print ("zeile gelesen;", inhalt1)
+                
+                inhalt = inhalt1.strip().split(",")
+
+                if len(inhalt) == 7:
+                    self.nameLine1.setText(inhalt[0])
+                    self.nameLine2.setText(inhalt[1])
+
+                    dformat = QLocale().dateFormat(QLocale.FormatType.ShortFormat)
+                    self.geburtsdatumLine.setDate(QDate.fromString(inhalt[2], dformat))
+
+                    self.adressLine.setText(inhalt[3])
+                    self.postleitzahlLine.setText(inhalt[4])
+                    self.ortLine.setText(inhalt[5])
+                    self.landlabel2.setCurrentText(inhalt[6])
+
+
+            print("Daten geladen:", dateipfad)  # Ausgabe in der Konsole
 
 
 
