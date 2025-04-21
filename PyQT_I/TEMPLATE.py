@@ -35,7 +35,6 @@ class Fenster(QMainWindow):
 
 
 
-
 def main():
     app = QApplication(sys.argv)  
     mainwindow = Fenster()       

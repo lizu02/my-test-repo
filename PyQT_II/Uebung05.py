@@ -1,5 +1,3 @@
-
-
 import sys
 import csv
 import urllib.parse
@@ -14,13 +12,11 @@ class Fenster(QMainWindow):
         self.createLayout()
 
 
-
     def createLayout(self):
         ## Fenstertitel / Layout
         self.setWindowTitle("Main Window")
         ### LAYOUT WÄHLEN:
         layout = QGridLayout()
-
 
         menubar = self.menuBar()
         filemenu = menubar.addMenu("File")  # Menüleiste (oben) erstellen
@@ -43,8 +39,6 @@ class Fenster(QMainWindow):
         ladenmenu.addAction(Laden)
 
 
-
-
         button3 = QPushButton("Save")           # knopf ganz unten erstellen
         button1 = QPushButton("Auf Karte anzeigen")
         button2 = QPushButton("Laden")
@@ -64,9 +58,7 @@ class Fenster(QMainWindow):
         self.ortLine = QLineEdit()
         self.landlabel = QLabel("Land:")
         self.landlabel2 = QComboBox()
-        self.landlabel2.addItems(["Schweiz", "Deutschland", "Österreich"])
-        
-      
+        self.landlabel2.addItems(["Schweiz", "Deutschland", "Österreich"])     
 
         # Positionierung der einzelnen Widgets im Gesamtlayout
         layout.addWidget(self.nameLabel1, 0, 0)   
@@ -87,29 +79,20 @@ class Fenster(QMainWindow):
         layout.addWidget(button2, 8, 1)
         layout.addWidget(button3, 9, 1)
                     
-
-
         self.setMinimumSize(600,400)       # Mindestgröße des Fensters
         
-
         ## Zentrierung der Widgets
         center = QWidget()
         center.setLayout(layout)
         self.setCentralWidget(center)
         
-      
-
         ## Fenster anzeigen
         self.show()
-
 
         button1.clicked.connect(self.menu_Karte_anzeigen)
         button2.clicked.connect(self.menu_laden)
         button3.clicked.connect(self.menu_save)  
         
-
-
-
 
     def menu_save(self):  # Funktion, die aufgerufen wird, wenn "save" geklickt wird
    
@@ -132,8 +115,7 @@ class Fenster(QMainWindow):
 
             print("Daten gespeichert in:", dateipfad)  # Ausgabe in der Konsole
 
-
-    
+   
     def menu_Karte_anzeigen(self):
         adresse = self.adressLine.text()
         PLZ = self.postleitzahlLine.text()
@@ -174,15 +156,9 @@ class Fenster(QMainWindow):
             print("Daten geladen:", dateipfad)  # Ausgabe in der Konsole
 
 
-
-
     def menu_quit(self):
             
         self.close()  # Fenster schließen 
-
-
-   
-
 
 
 

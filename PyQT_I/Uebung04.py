@@ -8,27 +8,24 @@ class Fenster(QMainWindow):
         self.createLayout()
 
 
-
     def createLayout(self):
-        ## Fenstertitel / Layout
-        self.setWindowTitle("GUI Programmierung")
-        ### LAYOUT WÄHLEN:
-        layout = QGridLayout()
+        
+        self.setWindowTitle("GUI Programmierung")      ## Fenstertitel / Layout
+    
+        layout = QGridLayout()                         ### LAYOUT WÄHLEN:
 
 
         menubar = self.menuBar()
-        filemenu = menubar.addMenu("File")  # Menüleiste (oben) erstellen
+        filemenu = menubar.addMenu("File")            # Menüleiste (oben) erstellen
         
-        speichern = QAction("save", self)          # Aktion "save" erstellen für das menu
-        verlassen = QAction("Quit", self)       # Aktion "quit" erstellen für das menu
+        speichern = QAction("save", self)             # Aktion "save" erstellen für das menu
+        verlassen = QAction("Quit", self)             # Aktion "quit" erstellen für das menu
 
-        speichern.triggered.connect(self.menu_save)  #wenn es 'getriggert' wird, also ausgelöst wird, dann wird die Funktion menu_save aufgerufen
-        verlassen.triggered.connect(self.menu_quit)  #wenn es 'getriggert' wird, also ausgelöst wird, dann wird die Funktion menu_quit aufgerufen
+        speichern.triggered.connect(self.menu_save)   #wenn es 'getriggert' wird, also ausgelöst wird, dann wird die Funktion menu_save aufgerufen
+        verlassen.triggered.connect(self.menu_quit)   #wenn es 'getriggert' wird, also ausgelöst wird, dann wird die Funktion menu_quit aufgerufen
 
-        filemenu.addAction(speichern)  # Aktion "speichern" dem Menü "File" hinzufügen
-        filemenu.addAction(verlassen)  # Aktion "verlassen" dem Menü "File" hinzufügen
-
-
+        filemenu.addAction(speichern)                 # Aktion "speichern" dem Menü "File" hinzufügen
+        filemenu.addAction(verlassen)                 # Aktion "verlassen" dem Menü "File" hinzufügen
 
 
         button1 = QPushButton("Save")           # knopf ganz unten erstellen
@@ -48,9 +45,7 @@ class Fenster(QMainWindow):
         self.ortLine = QLineEdit()
         self.landlabel = QLabel("Land:")
         self.landlabel2 = QComboBox()
-        self.landlabel2.addItems(["Schweiz", "Deutschland", "Österreich"])
-        
-      
+        self.landlabel2.addItems(["Schweiz", "Deutschland", "Österreich"])    
 
         # Positionierung der einzelnen Widgets im Gesamtlayout
         layout.addWidget(self.nameLabel1, 0, 0)   
@@ -69,28 +64,18 @@ class Fenster(QMainWindow):
         layout.addWidget(self.landlabel2, 6, 1)
         layout.addWidget(button1, 7, 1)
                     
-
-
         self.setMinimumSize(600,400)       # Mindestgröße des Fensters
         
-
-        ## Zentrierung der Widgets
-        center = QWidget()
+        center = QWidget()                ## Zentrierung der Widgets
         center.setLayout(layout)
-        self.setCentralWidget(center)
-        
-      
+        self.setCentralWidget(center)     
 
-        ## Fenster anzeigen
-        self.show()
-
+        self.show()                         ## Fenster anzeigen
 
         button1.clicked.connect(self.menu_save)  # Wenn Button 1 geklickt wird, dann wird die Funktion menu_save aufgerufen (selbe soll auch bei speichern oben links passieren)
 
 
-
-
-    def menu_save(self):  # Funktion, die aufgerufen wird, wenn "save" geklickt wird
+    def menu_save(self):                 # Funktion, die aufgerufen wird, wenn "save" geklickt wird
    
         name1 = self.nameLine1.text()
         name2 = self.nameLine2.text()
@@ -99,27 +84,15 @@ class Fenster(QMainWindow):
         plz = self.postleitzahlLine.text()
         ort = self.ortLine.text()
         land = self.landlabel2.currentText()
-
-    
+   
         zeile = f"{name1},{name2},{geburtsdatum},{adresse},{plz},{ort},{land}\n"
-
-    
+   
         with open("output.txt", "w", encoding="utf-8") as datei:
             datei.write(zeile)
+        print("Daten gespeichert")                          # Ausgabe in der Konsole
 
-        print("Daten gespeichert")  # Ausgabe in der Konsole
-
-
-
-
-    def menu_quit(self):
-            
-        self.close()  # Fenster schließen 
-
-
-   
-
-
+    def menu_quit(self):           
+        self.close()                            # Fenster schließen 
 
 
 def main():

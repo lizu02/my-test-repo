@@ -1,0 +1,157 @@
+'''
+Zusammenfassung GIT / GITHUB
+Was ist das?
+-	Versionenkontrollsystem (Version Control System VCS) und Versionenverwaltungssystem
+-	Besonderheit: Es besteht ein zentrales Repository für jedes Projekt, aber alle beteiligten Nutzer können 
+    eine lokale Arbeitskopie dieses Verzeichnisses herunterladen, bearbeiten und falls gewünscht die Änderungen wieder 
+    auf dem Hauptverzeichnis (Repository) hochladen.
+Zwecke?
+-	Kollaboration mit digitalen Inhalten
+-	Nachvollziehbarkeit / Änderung & Historie
+-	Integrität gewährleisten
+-	Wiederspruchsfreiheit von Änderungen an gleicher Stelle
+
+Begriffserklärungen:
+- Repository (=Repo) = Ablage von digitalen Daten; thematisch zusammenhängend; vollständige Speicherung der historie
+- Working Tree (=Working Directory) = Arbeitsverzeichnis von Git mit verschiedenen Versionen 
+    (hier werden Modifikationen vorgenommen)
+- Commit = Eine Änderung, die wir am Working-Tree vollziehen wollen. Also geänderte Dateien werden im Repository als Commits 
+    gespeichert (inkl. Metadaten wie Datum&Uhrzeit, evtl. Nachricht/kommentar zur Anpassung)
+- HEAD = symbolische Referenz auf den neusten Commit im aktuellen Branch. Also Kopf/Spitze einer Entwicklung 
+    («Das letzte Blatt auf dem Baum»)
+- Branch = Abzweigung in der Entwicklung, um neue Funktionalitäten/Features zu entwickeln. So ein «neuer Zweig» 
+    wird später mittels «Merge» in den Hauptzweig integriert.
+- Clone = Ein Repository wird geclonet d.h. dass eine lokale Kopie dieses Repositorys entsteht, wleche die ganze 
+    Änderungshistorie des Repository enthält.
+- SHA-1 = Secure Hash Algorithmus (=eine Art Versionsnummer) Erstellt eine eindeutige 160 Bit lange Prüfsumme. 
+    In GIT werden alle Commits mit so einer SHA-1-Summe bennant (=Commit-ID). 
+- Tags = symbolische Namen für schwer zu merkende SHA-1-Summen. Wichtige Releases werden mit Tags gekennzeichnet. 
+    Tags können irgendeine einfachere Versionenbezeichnung sein (evtl zusätzlich mit Metadaten, Autor etc.)
+
+Staging:
+-	(Git verwendet Zweistufiges System um lokale Änderungen nachzuvollziehen.) 
+-	Staging bedeutet, dass Dateien vorbereitet wurden, um in den lokalen Working-Tree integriert zu werden 
+    (Snapshots von mehreren Dateien).
+-	Sobald Commit ausgelöst, sind Änderungen amtlich und in der Historie zu sehen.
+-	Änderung während Staging-Phase, die beim Commit nicht mehr vorhanden sind werden verworfen.
+-	Staging-Zustände:
+        o	Modified = lokal geänderte Dateien
+        o	Staged = Snapshots von gemachten Änderunen
+        o	Commit = Übertragene, definitive Änderung (nun Teil der Historie)
+
+
+
+
+Git Bash: 
+    Desktop-App / Kommandozeile (Terminal). Kein grafisches Programm, nur Kommandozeile. 
+    (Brauchten wir um einige Anfangs-Konfigurationen zu erledigen  Bearbeitung mit spezifischen Befehlen (siehe weiter..))
+GitHub.com:
+    Webseite, um die Dateiverwaltung durchzuführen. Dort liegen Repositories online (cloud)  
+    Keine Programmierung direkt – eher Verwaltung & Übersicht	
+GitHub Desktop:
+    Desktop-App (lokal installiert). Grafisches Programm (Git einfacher bedienbar ohne Terminal)
+
+Unterschied Git und GitHub:
+-	Git = System welches nicht-lineare Entwicklung ermöglicht und Protokoll für Datentransfer zur verfügung stellt
+-	Git = open Source und kostenlos
+-	GitHub = Online-Dienst welcher auf git-Basis arbeitet.
+-	GitHub = kostenlos aber für gewisse Erweiterungen monatliche Gebühr
+
+Wichtige Befehle für die Git Bash Konsole (wie in Übung ):
+-	git clone url [dir]  Git repository kopieren um irgendwo hinzuzufügen
+-	cd  In einen Ordner navigieren in Git Bash.
+Befehl: cd Ordner1
+-	git init  Ein neues Git-Repository im gewählten Ordner initialisieren 
+-	git add file  Um eigene, neue Datei zur Versionsverwaltung hinzuzufügen oder überarbeitete Datei für nächsten Commit anmelden
+Befehl: git add Test.txt
+-	git commit  Änderungen müssen mit Commit bestätigt werden um in HEAD aufgenommen zu werden
+Befehl: git commit -m «Beschreibung der Änderung»
+-	git status  Aktualität der Arbeitskopie prüfen
+Befehl: git status
+-	git branch  Neuen Branch erstellen oder verfügbare anzeigen. (Bei Neuerstellung Name des Branch dahinter eingeben)
+Befehl: git branch Branchname
+-	git checkout  In einen bestimmten Branch wechseln
+Befehl: git checkout Branchname
+-	git diff  Zeigt unterschiede, was gestaged ist und was zwar verändert aber (noch) nicht gestaged ist.
+-	git help [command]  Hilfe/Info über einen spezifischen Befehl(=command)
+-	git pull  von entferntem Projektarchiv Datei holen und in den aktuellen zweig einbetten
+-	git push  Neue Zweige/Daten in ein entferntes Repository bringen
+
+Wichtige Befehle / Erklärungen zu GitHub.com:
+-	Neues Repository erstellen  «New»  «Create repository”
+
+Wichtige Befehle / Erklärungen zu GitHub Desktop:
+-	Änderungen bestätigen  «commit to main» bzw. «commit to (Name des Branches) » und zuvor kurze Beschreibung hinzufügen
+-	Änderungen auf GitHub Repository hochladen  «Publish Branch» bzw. «Push origin»
+-	Neuer Branch erstellen  auf «Branches» klicken und neuer Name für den Branch vergeben
+-	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Zusammenfassung Informatik / Theoriefragen:
+
+Die wichtigsten Punkte/Dinge/Zutat für Objektorientierung
+    •	Klassen
+    •	Attribute
+    •	Methoden 
+
+Unterschied private Variable / public Variable
+   - Private: Kann man nur innerhalb der Funktion zugreifen (mit getter und setter methoden)
+   - Public: Kann überall im Programm direkt angesprochen werden
+  
+Unterschied definition Klasse und instanzierung einer Klasse:
+Was ist eine Klassendefinition?
+   - Klasse wie "Vorlage/Schablone". Klasse beschreibt die Stuktur eines Objekts, welches aus 
+   Attributen und Methoden besteht. Man legt fest wie etwas gebaut werden soll (wie Bauplan).
+Was sind Instanzen?
+   - Eine Instanz geht dann in diese Klasse rein und ist ein Eintrag gemäss diesen Vorgaben. 
+   Die Instanz ruft dann die Methoden der zugehörig definierten Klasse auf. Sie ist die Ausführung 
+   einer Klasse mit konkreten Werten für die einzelnen Attribute
+ 
+Lebenszyklus einer Instanz? Wie sieht er aus?
+   - Instanz wird erstellt, benutzt und dann evtl. gelöscht um Platz für neues zu schaffen und 
+   damit programm besser läuft und nicht abstürzt
+
+Errorhandling? / Fehler kontrolliert abfangen?
+   •	Raise error: Bsp. if alter < 18: raise ValueError ("Sie müssen über 18J sein")
+   •	Try error mit Exceptmethoden: (Mache etwas, ausser ein bestimmter fall tritt ein, 
+        dann musst du ein error geben) Bsp. try x = 5/1 except ZeroDivisionError: print("Division durch 0 geht nicht") 
+ 
+Was bedeutet das Self eigentlich genau?
+   - self ist ein Verweis auf das aktuelle Objekt (also die Instanz der Klasse), in dem du gerade bist. 
+   Das self ist also immer nur innerhalb einer Klasse! 
+    (wir könnten statt self auch ein anders wort nehmen, aber in python ist das so "standardisiert")
+    Vergleich z.B. wenn ich selbst ein Objekt bin, dann bedeutet "self" etwa dasselbe wie "ich":
+    Bsp. "Ich (self) habe ein Name, der Name ist self.Name"
+
+Was sind magische methoden in python und wie können diese verwendet werden?
+   -  Spezielle Methoden, um Verhalten von Objekten zu steuern. Sie geben einer Klasse besondere Fähigkeiten. 
+    Einleitung und Ende solcher Magic Methods immer mit doppeltem unterstrich _ _. 
+    Speziell daran ist, dass Methoden automatisch beim Erzeugen eines Objekts aufgerufen werden und nicht die Funktion direkt.
+
+Was ist eine Klassendefinition?
+   - Eine Klassendefinition in Python ist eine Vorlage, um eigene Datentypen mit Eigenschaften (Attribute)
+     und Verhalten (Methoden) zu erstellen. Sie beginnt mit dem Schlüsselwort class. 
+
+
+
+
+
+
+
+
+
+
+
+'''
